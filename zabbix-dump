@@ -492,6 +492,7 @@ case $DBTYPE in
         DB_VER=$(psql "${DB_OPTS_BATCH[@]}" -c "select optional from dbversion;" 2>/dev/null)
         ;;
 esac
+DB_VER=$(echo "${DB_VER}" | tr '\n' '')
 if [ $? -eq 0 ]; then
     # version string is like: 02030015
     re='(.*)([0-9]{2})([0-9]{4})'
